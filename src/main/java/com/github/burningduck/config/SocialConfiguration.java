@@ -20,6 +20,7 @@ import org.springframework.social.connect.ConnectionRepository;
 import org.springframework.social.connect.UsersConnectionRepository;
 import org.springframework.social.connect.jdbc.JdbcUsersConnectionRepository;
 import org.springframework.social.gitlab.api.Gitlab;
+import org.springframework.social.gitlab.connect.GitlabConfiguration;
 import org.springframework.social.gitlab.connect.GitlabConnectionFactory;
 import org.springframework.social.security.AuthenticationNameUserIdSource;
 
@@ -39,10 +40,7 @@ public class SocialConfiguration extends SocialConfigurerAdapter {
 
     @Override
     public void addConnectionFactories(ConnectionFactoryConfigurer connectionFactoryConfigurer, Environment environment) {
-        connectionFactoryConfigurer.addConnectionFactory(new GitlabConnectionFactory(
-                "APP-ID",
-                "APP-SECRET"
-        ));
+        connectionFactoryConfigurer.addConnectionFactory(new GitlabConnectionFactory(GitlabConfiguration.fromProperties(environment)));
     }
 
     @Override

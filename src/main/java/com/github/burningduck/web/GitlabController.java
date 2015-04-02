@@ -31,7 +31,7 @@ public class GitlabController {
     
     @RequestMapping(value = "/projects", method = RequestMethod.GET)
     public String getProjectsPage(Model model) {
-        model.addAttribute("projects", gitlab.projectOperations().getProjectsAccesibleByCurrentUser());
+        model.addAttribute("projects", gitlab.projectOperations().getProjectsAccessibleByCurrentUser());
         return "gitlab/projects";
     }
 
